@@ -55,7 +55,7 @@ public class ThirdOrderedTest {
 
     @Test
     public void secondTest() {
-        assertTrue(false);
+        assertTrue(true);
     }
 
     @Test

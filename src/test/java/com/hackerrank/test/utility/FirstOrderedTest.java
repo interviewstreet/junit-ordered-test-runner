@@ -70,7 +70,7 @@ public class FirstOrderedTest {
         @Test
         @Order(2)
         public void secondTest() {
-            assertTrue(2 + 3 == 6);
+            assertFalse(2 + 3 == 6);
         }
     }
 }

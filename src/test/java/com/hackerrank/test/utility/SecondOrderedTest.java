@@ -61,14 +61,14 @@ public class SecondOrderedTest {
         public void firstTest() {
             Double a = (double) 1 / 0;
 
-            assertEquals(a, 0, 0.01);
+            assertNotEquals(a, 0, 0.01);
         }
 
         @Test
         @Ignore
         @Order(2)
         public void secondTest() {
-
+            assertFalse(true);
         }
     }
 }
