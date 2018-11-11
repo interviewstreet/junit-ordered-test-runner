@@ -16,11 +16,10 @@
 package com.hackerrank.test.utility;
 
 /**
- *
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class Color {
 

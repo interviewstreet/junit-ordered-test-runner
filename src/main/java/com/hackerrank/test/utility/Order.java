@@ -21,21 +21,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- *
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({
-    ElementType.METHOD
-})
+@Target({ElementType.METHOD})
 public @interface Order {
 
-    /**
-     *
-     * @return order
-     */
+    /** @return order */
     public int value();
 }

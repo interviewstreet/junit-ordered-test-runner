@@ -15,23 +15,23 @@
  */
 package com.hackerrank.test.utility;
 
+import static java.util.stream.Collectors.toList;
+import static org.apache.commons.lang.exception.ExceptionUtils.getStackTrace;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static java.util.stream.Collectors.toList;
 import java.util.stream.Stream;
-import static org.apache.commons.lang.exception.ExceptionUtils.getStackTrace;
 import org.junit.AssumptionViolatedException;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
 /**
- *
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class TestWatchman extends TestWatcher {
 
@@ -41,20 +41,14 @@ public class TestWatchman extends TestWatcher {
     private String clazz = null;
     private TestObject test = null;
 
-    /**
-     *
-     * @param clazz test class
-     */
+    /** @param clazz test class */
     public void registerClass(Class<?> clazz) {
         this.clazz = clazz.getCanonicalName();
 
         TestWatchman.tests.put(this.clazz, new ArrayList<>());
     }
 
-    /**
-     *
-     * @param description test description
-     */
+    /** @param description test description */
     @Override
     protected void starting(Description description) {
         Long start = System.nanoTime();
@@ -62,10 +56,7 @@ public class TestWatchman extends TestWatcher {
         this.test = new TestObject(description.getMethodName(), start, 0l, "failed");
     }
 
-    /**
-     *
-     * @param description test description
-     */
+    /** @param description test description */
     @Override
     protected void finished(Description description) {
         this.test.setEnd(System.nanoTime());
@@ -74,7 +65,6 @@ public class TestWatchman extends TestWatcher {
     }
 
     /**
-     *
      * @param e assumption violation exception
      * @param description test description
      */
@@ -92,13 +82,10 @@ public class TestWatchman extends TestWatcher {
                         "\n",
                         Stream.of(getStackTrace(e).split("\n"))
                                 .map(str -> Color.RED + str + Color.RESET)
-                                .collect(toList())
-                )
-        );
+                                .collect(toList())));
     }
 
     /**
-     *
      * @param e failure exception
      * @param description test description
      */
@@ -113,25 +100,26 @@ public class TestWatchman extends TestWatcher {
                         "\n",
                         Stream.of(getStackTrace(e).split("\n"))
                                 .map(str -> Color.RED + str + Color.RESET)
-                                .collect(toList())
-                )
-        );
+                                .collect(toList())));
     }
 
-    /**
-     *
-     * @param description test description
-     */
+    /** @param description test description */
     @Override
     protected void succeeded(Description description) {
         this.test.setEnd(System.nanoTime());
         this.test.setStatus("succeeded");
     }
 
-    /**
-     *
-     * @param clazz test class
-     */
+    /** @return boolean describing whether all the tests succeeded or not */
+    public boolean allTestsSucceeded() {
+        return TestWatchman.tests
+                .get(this.clazz)
+                .stream()
+                .map(TestObject::getStatus)
+                .allMatch(status -> status.equals("succeeded"));
+    }
+
+    /** @param clazz test class */
     public void createReport(Class<?> clazz) {
         ReportGenerator.createReport(clazz, TestWatchman.tests);
     }

@@ -15,15 +15,16 @@
  */
 package com.hackerrank.test.utility;
 
+import static java.util.stream.Collectors.toList;
+import static org.apache.commons.lang.exception.ExceptionUtils.getStackTrace;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import static java.util.stream.Collectors.toList;
 import java.util.stream.Stream;
-import static org.apache.commons.lang.exception.ExceptionUtils.getStackTrace;
 import org.jdom.Attribute;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -31,16 +32,14 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 /**
- *
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class ReportGenerator {
 
     /**
-     *
      * @param clazz test class
      * @param suiteTests test methods in the class
      */
@@ -50,7 +49,8 @@ public class ReportGenerator {
         Document report = new Document();
 
         if (suiteTests.containsKey(className)) {
-            report.setRootElement(ReportGenerator.createReport(className, suiteTests.get(className)));
+            report.setRootElement(
+                    ReportGenerator.createReport(className, suiteTests.get(className)));
         } else {
             Element testsuites = new Element("testsuites");
 
@@ -101,21 +101,19 @@ public class ReportGenerator {
         outputter.setFormat(Format.getPrettyFormat());
 
         try {
-            outputter.output(report, new FileWriter(new File(reportPath + "/TEST-" + className + ".xml")));
+            outputter.output(
+                    report, new FileWriter(new File(reportPath + "/TEST-" + className + ".xml")));
         } catch (IOException ex) {
             System.out.println(
                     String.join(
                             "\n",
                             Stream.of(getStackTrace(ex).split("\n"))
                                     .map(str -> Color.RED + str + Color.RESET)
-                                    .collect(toList())
-                    )
-            );
+                                    .collect(toList())));
         }
     }
 
     /**
-     *
      * @param className test class
      * @param tests test methods in the class
      * @return XML element for a test report

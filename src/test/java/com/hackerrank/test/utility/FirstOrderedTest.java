@@ -15,8 +15,9 @@
  */
 package com.hackerrank.test.utility;
 
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -25,14 +26,12 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 
 /**
- *
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
  */
 public class FirstOrderedTest {
 
-    public FirstOrderedTest() {
-    }
+    public FirstOrderedTest() {}
 
     @BeforeClass
     public static void setUpClass() {
@@ -47,13 +46,14 @@ public class FirstOrderedTest {
     @Test
     public void startTest() {
         JUnitCore.runClasses(TestHelper.class);
+
+        assertTrue(TestWatchman.watchman.allTestsSucceeded());
     }
 
     @RunWith(OrderedTestRunner.class)
     public static class TestHelper {
 
-        @Rule
-        public TestWatcher watchman = TestWatchman.watchman;
+        @Rule public TestWatcher watchman = TestWatchman.watchman;
 
         @Test
         @Order(1)

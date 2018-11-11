@@ -15,25 +15,23 @@
  */
 package com.hackerrank.test.utility;
 
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestWatcher;
 
 /**
- *
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
  */
 public class FourthUnorderedTest {
 
-    @Rule
-    public TestWatcher watchman = TestWatchman.watchman;
+    @Rule public TestWatcher watchman = TestWatchman.watchman;
 
-    public FourthUnorderedTest() {
-    }
+    public FourthUnorderedTest() {}
 
     @BeforeClass
     public static void setUpClass() {
@@ -47,7 +45,7 @@ public class FourthUnorderedTest {
 
     @Test
     public void firstTest() {
-        assertTrue(0 == 0);
+        assertTrue(ResultMatcher.matchJson("{\"a\": 2, \"b\": 4}", "{\"a\": 2, \"b\": 4}", false));
     }
 
     @Test

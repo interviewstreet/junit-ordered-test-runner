@@ -15,25 +15,24 @@
  */
 package com.hackerrank.test.utility;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static java.util.stream.Collectors.toList;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
 
 /**
- *
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class OrderedTestRunner extends BlockJUnit4ClassRunner {
 
     /**
-     *
      * @param clazz test class
      * @throws InitializationError initialization error
      */
@@ -41,10 +40,7 @@ public class OrderedTestRunner extends BlockJUnit4ClassRunner {
         super(clazz);
     }
 
-    /**
-     *
-     * @return test methods ordered by execution order
-     */
+    /** @return test methods ordered by execution order */
     @Override
     protected List<FrameworkMethod> computeTestMethods() {
         Map<FrameworkMethod, Integer> orders = new HashMap();

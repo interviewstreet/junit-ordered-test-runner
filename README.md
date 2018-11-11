@@ -2,12 +2,55 @@
 
 An application to provide support for executing tests in the specific order and generate the customized XML report.
 
+## Installation
+
+- [Apache Maven](maven.apache.org)
+```
+<dependency>
+    <groupId>com.hackerrank.applications</groupId>
+    <artifactId>junit-ordered-test-runner</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+- [Gradle Groovy DSL](gradle.org)
+```
+compile 'com.hackerrank.applications:junit-ordered-test-runner:1.0.0'
+```
+
+- [Gradle Kotlin DSL](github.com/gradle/kotlin-dsl)
+```
+compile(group = "com.hackerrank.applications", name = "junit-ordered-test-runner", version = "1.0.0")
+```
+
+- [Scala SBT](scala-sbt.org)
+```
+libraryDependencies += "com.hackerrank.applications" % "junit-ordered-test-runner" % "1.0.0"
+```
+
+- [Apache Ivy](ant.apache.org/ivy/)
+```
+<dependency org="com.hackerrank.applications" name="junit-ordered-test-runner" rev="1.0.0" />
+```
+
+- [Groovy Grape](groovy-lang.org/grape.html)
+```
+@Grapes(
+  @Grab(group='com.hackerrank.applications', module='junit-ordered-test-runner', version='1.0.0')
+)
+```
+
+- [Apache Builder](buildr.apache.org)
+```
+'com.hackerrank.applications:junit-ordered-test-runner:jar:1.0.0'
+```
+
 ## Sample Usage
 
 - The `OrderedTestRunner` should be used to run the test. The order of each test can be set by the `@Order` annotation. The test with lower order value is run first.
 - Run the tests with `TestWatcher` rule using `@Rule` annotation.
-- Register the test class using the `registerClass` method of TestWatcher in the `@BeforeClass` setup.
-- Finally, invoke the `createReport` method of TestWatcher in the `@AfterClass` setup.
+- Register the test class using the `registerClass` method of `TestWatcher` in the `@BeforeClass` setup.
+- Finally, invoke the `createReport` method of `TestWatcher` in the `@AfterClass` setup.
 
 For example,
 
@@ -53,7 +96,7 @@ public class SampleOrderedTest {
 
 Also,
 
-- If a `Runner` is already being used to run the tests, then, an inner class can be used to run with `OrderedTestRunner`. Tests can be triggered using the `JUnitCore.runClasses` method.
+- If a `Runner` is already being used to run the tests, then, an inner class can be used to run with `OrderedTestRunner`. Tests can be triggered using the `JUnitCore.runClasses` method. In this case, the test is always passing, so optional check can be performed using `allTestSucceeded`.
 
 For example,
 
@@ -76,6 +119,8 @@ public class SampleOrderedTest {
     @Test
     public void startTest() {
         JUnitCore.runClasses(TestHelper.class);
+
+        assertTrue(TestWatchman.watchman.allTestsSucceeded());
     }
 
     @RunWith(OrderedTestRunner.class)

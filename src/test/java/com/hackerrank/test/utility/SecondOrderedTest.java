@@ -15,8 +15,9 @@
  */
 package com.hackerrank.test.utility;
 
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -26,14 +27,12 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 
 /**
- *
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
  */
 public class SecondOrderedTest {
 
-    public SecondOrderedTest() {
-    }
+    public SecondOrderedTest() {}
 
     @BeforeClass
     public static void setUpClass() {
@@ -48,13 +47,14 @@ public class SecondOrderedTest {
     @Test
     public void startTest() {
         JUnitCore.runClasses(SecondOrderedTest.TestHelper.class);
+
+        assertTrue(TestWatchman.watchman.allTestsSucceeded());
     }
 
     @RunWith(OrderedTestRunner.class)
     public static class TestHelper {
 
-        @Rule
-        public TestWatcher watchman = TestWatchman.watchman;
+        @Rule public TestWatcher watchman = TestWatchman.watchman;
 
         @Test
         @Order(1)
@@ -69,6 +69,30 @@ public class SecondOrderedTest {
         @Order(2)
         public void secondTest() {
             assertFalse(true);
+        }
+
+        @Test
+        @Order(3)
+        public void thirdTest() {
+            assertFalse(
+                    ResultMatcher.matchJsonArray(
+                            "[{\"a\": 2}, {\"b\": 4}]", "[{\"b\": 2}, {\"a\": 4}]", false));
+        }
+
+        @Test
+        @Order(4)
+        public void fourthTest() {
+            assertFalse(
+                    ResultMatcher.matchJsonArray(
+                            "[{\"a\": 4}, {\"b\": 2}]", "[{\"b\": 2}, {\"a\": 4}]", false));
+        }
+
+        @Test
+        @Order(5)
+        public void fifthTest() {
+            assertTrue(
+                    ResultMatcher.matchJsonArrayIgnoreOrder(
+                            "[{\"a\": 4}, {\"b\": 2}]", "[{\"b\": 2}, {\"a\": 4}]", false));
         }
     }
 }

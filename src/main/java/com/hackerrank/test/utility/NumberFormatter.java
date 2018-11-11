@@ -18,35 +18,28 @@ package com.hackerrank.test.utility;
 import java.math.BigDecimal;
 
 /**
- *
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class NumberFormatter {
 
     /**
-     *
      * @param value double value
      * @param precision number of decimal places
      * @return string representation of rounded double to fixed decimal places
      */
     public static String stringValue(double value, int precision) {
-        return new BigDecimal(value)
-                .setScale(precision, BigDecimal.ROUND_HALF_EVEN)
-                .toString();
+        return new BigDecimal(value).setScale(precision, BigDecimal.ROUND_HALF_EVEN).toString();
     }
 
     /**
-     *
      * @param value double value
      * @param precision number of decimal places
      * @return rounded double to fixed decimal places
      */
     public static double doubleValue(double value, int precision) {
-        return new BigDecimal(value)
-                .setScale(precision, BigDecimal.ROUND_HALF_EVEN)
-                .doubleValue();
+        return new BigDecimal(value).setScale(precision, BigDecimal.ROUND_HALF_EVEN).doubleValue();
     }
 }

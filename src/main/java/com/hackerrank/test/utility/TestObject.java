@@ -16,11 +16,10 @@
 package com.hackerrank.test.utility;
 
 /**
- *
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
- * @version 1.0
- * @since 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class TestObject {
 
@@ -31,7 +30,6 @@ public class TestObject {
     private String trace;
 
     /**
-     *
      * @param name test name
      * @param start test start time in nanoseconds
      * @param end test finish time in nanoseconds
@@ -45,58 +43,37 @@ public class TestObject {
         this.trace = null;
     }
 
-    /**
-     *
-     * @return test name
-     */
+    /** @return test name */
     public String getName() {
         return this.name;
     }
 
-    /**
-     *
-     * @param end test finish time in nanoseconds
-     */
+    /** @param end test finish time in nanoseconds */
     public void setEnd(Long end) {
         this.end = end;
     }
 
-    /**
-     *
-     * @param status test status
-     */
+    /** @param status test status */
     public void setStatus(String status) {
         this.status = status;
     }
 
-    /**
-     *
-     * @return test status
-     */
+    /** @return test status */
     public String getStatus() {
         return this.status;
     }
 
-    /**
-     *
-     * @param trace stack trace
-     */
+    /** @param trace stack trace */
     public void setTrace(String trace) {
         this.trace = trace;
     }
 
-    /**
-     *
-     * @return stack trace
-     */
+    /** @return stack trace */
     public String getTrace() {
         return this.trace;
     }
 
-    /**
-     *
-     * @return test duration in seconds
-     */
+    /** @return test duration in seconds */
     public double getExecutionTime() {
         return NumberFormatter.doubleValue((this.end - this.start) / 1_000_000_000.0, 3);
     }

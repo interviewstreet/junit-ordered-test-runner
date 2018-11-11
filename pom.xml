@@ -4,7 +4,7 @@
 
     <groupId>com.hackerrank.applications</groupId>
     <artifactId>junit-ordered-test-runner</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -32,19 +32,19 @@
             <organizationUrl>https://www.hackerrank.com/</organizationUrl>
         </developer>
     </developers>
-    
+
     <scm>
         <connection>scm:git:git://github.com/interviewstreet/junit-ordered-test-runner.git</connection>
         <developerConnection>scm:git:ssh://github.com:interviewstreet/junit-ordered-test-runner.git</developerConnection>
         <url>http://github.com/interviewstreet/junit-ordered-test-runner/tree/master</url>
     </scm>
-    
+
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
-        
+
         <repository>
             <id>ossrh</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
@@ -80,14 +80,14 @@
             <type>jar</type>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.0.1</version>
-                
+
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -97,12 +97,12 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.0.1</version>
-                
+
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -112,7 +112,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
