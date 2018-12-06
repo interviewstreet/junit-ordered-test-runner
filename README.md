@@ -9,40 +9,40 @@ An application to provide support for executing tests in the specific order and 
 <dependency>
     <groupId>com.hackerrank.applications</groupId>
     <artifactId>junit-ordered-test-runner</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
 - [Gradle Groovy DSL](gradle.org)
 ```
-compile 'com.hackerrank.applications:junit-ordered-test-runner:1.0.1'
+compile 'com.hackerrank.applications:junit-ordered-test-runner:1.0.2'
 ```
 
 - [Gradle Kotlin DSL](github.com/gradle/kotlin-dsl)
 ```
-compile(group = "com.hackerrank.applications", name = "junit-ordered-test-runner", version = "1.0.1")
+compile(group = "com.hackerrank.applications", name = "junit-ordered-test-runner", version = "1.0.2")
 ```
 
 - [Scala SBT](scala-sbt.org)
 ```
-libraryDependencies += "com.hackerrank.applications" % "junit-ordered-test-runner" % "1.0.1"
+libraryDependencies += "com.hackerrank.applications" % "junit-ordered-test-runner" % "1.0.2"
 ```
 
 - [Apache Ivy](ant.apache.org/ivy/)
 ```
-<dependency org="com.hackerrank.applications" name="junit-ordered-test-runner" rev="1.0.1" />
+<dependency org="com.hackerrank.applications" name="junit-ordered-test-runner" rev="1.0.2" />
 ```
 
 - [Groovy Grape](groovy-lang.org/grape.html)
 ```
 @Grapes(
-  @Grab(group='com.hackerrank.applications', module='junit-ordered-test-runner', version='1.0.1')
+  @Grab(group='com.hackerrank.applications', module='junit-ordered-test-runner', version='1.0.2')
 )
 ```
 
 - [Apache Builder](buildr.apache.org)
 ```
-'com.hackerrank.applications:junit-ordered-test-runner:jar:1.0.1'
+'com.hackerrank.applications:junit-ordered-test-runner:jar:1.0.2'
 ```
 
 ## Sample Usage
@@ -160,26 +160,6 @@ You can refer the given [test examples](src/test/java/com/hackerrank/test/utilit
 
 - The `TestWatcher` generates an XML report in the `target/hackerrank-report` directory. The filename is `TEST-{test-class-canonical-name}.xml`.
 - When running tests in a suite, suite report, as well as individual test reports, will be generated.
-
-## Report Formatting
-
-In test suite use `ReportFormatter.format(path)` to update the test name in canonical format, i.e., `{package}.{class_name}.{test_name}`. The path must be relative to the project directory. For example:
-```java
-package com.hackerrank.test;
-
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-    com.hackerrank.test.FirstTest.class,
-    com.hackerrank.test.SecondTest.class
-})
-public class TestSuite {
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-        ReportFormatter.format("target/surefire-reports/TEST-com.hackerrank.test.TestSuite.xml");
-    }
-}
-```
 
 ## Building Project
 

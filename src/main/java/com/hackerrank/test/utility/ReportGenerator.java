@@ -34,7 +34,7 @@ import org.jdom.output.XMLOutputter;
 /**
  * @author Abhimanyu Singh
  * @author abhimanyusingh@hackerrank.com
- * @version 1.0.0
+ * @version 1.0.2
  * @since 1.0.0
  */
 public class ReportGenerator {
@@ -129,8 +129,7 @@ public class ReportGenerator {
             Element testcase = new Element("testcase");
 
             Attribute classname = new Attribute("classname", className);
-            Attribute name = new Attribute("name", test.getName());
-
+            Attribute name = new Attribute("name", className + "." + test.getName());
             double testTime = test.getExecutionTime();
             executionTime += testTime;
 
